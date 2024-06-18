@@ -16,6 +16,8 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/admin")
+
+
 public class AdministradorController {
     @Autowired
     private IAdministradorService administradorService;

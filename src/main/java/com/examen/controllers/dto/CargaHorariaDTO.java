@@ -4,6 +4,8 @@ import com.examen.entity.*;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
@@ -19,4 +21,5 @@ public class CargaHorariaDTO {
     private GrupoDTO grupo;
     private MateriaDTO materia;
     private CarreraDTO carrera;
+    private List<HorarioMateriaGrupoDTO> horarios;
 }

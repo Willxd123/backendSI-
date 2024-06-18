@@ -20,6 +20,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/docente")
+
 public class DocenteController {
     @Autowired
     private IDocenteService docenteService;
@@ -30,6 +31,7 @@ public class DocenteController {
         if(docenteOptional.isPresent()){
             Docente docente = docenteOptional.get();
             DocenteDTO docenteDTO = DocenteDTO.builder()
+                    .id(docente.getId())
                     .nombre(docente.getNombre())
                     .apellidoP(docente.getApellidoP())
                     .apellidoM(docente.getApellidoM())
@@ -49,6 +51,7 @@ public class DocenteController {
     public ResponseEntity<?> findAll(){
         List<DocenteDTO> docenteDTOS = docenteService.findAll().
                 stream().map(docente -> DocenteDTO.builder()
+                        .id(docente.getId())
                         .nombre(docente.getNombre())
                         .apellidoP(docente.getApellidoP())
                         .apellidoM(docente.getApellidoM())

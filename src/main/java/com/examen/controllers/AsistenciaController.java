@@ -9,21 +9,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.util.Date;
+
+import java.util.Optional;
+import java.util.List;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.List;
-import java.util.Optional;
+
 
 @RestController
 @RequestMapping("/api/asistencia")
+
+
 public class AsistenciaController {
     @Autowired
     private IAsistenciaService asistenciaService;
 
     @GetMapping("/find/{id}")
-    public ResponseEntity<?> findById(@PathVariable Long id){
+    public ResponseEntity<?> findById(@PathVariable Long id) {
         Optional<Asistencia> asistenciaOptional = asistenciaService.findById(id);
-        if(asistenciaOptional.isPresent()){
+        if (asistenciaOptional.isPresent()) {
             Asistencia asistencia = asistenciaOptional.get();
             AsistenciaDTO asistenciaDTO = AsistenciaDTO.builder()
                     .id(asistencia.getId())

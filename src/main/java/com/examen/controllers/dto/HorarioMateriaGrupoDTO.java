@@ -1,6 +1,7 @@
 package com.examen.controllers.dto;
 
 import lombok.*;
+
 import java.time.LocalTime;
 
 @AllArgsConstructor
@@ -9,14 +10,10 @@ import java.time.LocalTime;
 @Getter
 @Data
 @Builder
-public class HorarioDTO {
+public class HorarioMateriaGrupoDTO {
     private Long id;
     private String dia;
     private LocalTime horaInicio;
     private LocalTime horaFin;
-
-    private MateriaDTO materia;
-    private GrupoDTO grupo;
-
-    private AulaDTO aula;
+    private String aula;
 }

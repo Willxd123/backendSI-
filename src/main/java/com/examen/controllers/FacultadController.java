@@ -16,6 +16,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/facultad")
+
 public class FacultadController {
     @Autowired
     private IFacultadService facultadService;

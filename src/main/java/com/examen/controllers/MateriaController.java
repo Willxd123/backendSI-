@@ -16,6 +16,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/materia")
+
 public class MateriaController {
     @Autowired
     private IMateriaService materiaService;
@@ -45,6 +46,7 @@ public class MateriaController {
         return ResponseEntity.ok(materiaDTOS);
     }
 
+    //@CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/save")
     public ResponseEntity<?> save(@RequestBody MateriaDTO materiaDTO) throws URISyntaxException {
         materiaService.save(Materia.builder()

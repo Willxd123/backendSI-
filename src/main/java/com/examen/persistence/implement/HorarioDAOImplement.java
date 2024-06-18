@@ -1,7 +1,9 @@
 package com.examen.persistence.implement;
 
 import com.examen.entity.Aula;
+import com.examen.entity.Grupo;
 import com.examen.entity.Horario;
+import com.examen.entity.Materia;
 import com.examen.persistence.IAulaDAO;
 import com.examen.persistence.IHorarioDAO;
 import com.examen.repository.AulaRepository;
@@ -22,6 +24,11 @@ public class HorarioDAOImplement implements IHorarioDAO {
     @Override
     public List<Horario> findAll() {
         return horarioRepository.findAll();
+    }
+
+    @Override
+    public List<Horario> findByMateriaAndGrupo(Materia materia, Grupo grupo) {
+        return horarioRepository.findByMateriaAndGrupo(materia, grupo);
     }
 
     @Override

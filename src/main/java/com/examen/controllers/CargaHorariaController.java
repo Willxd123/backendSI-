@@ -3,6 +3,7 @@ package com.examen.controllers;
 import com.examen.controllers.dto.*;
 import com.examen.entity.*;
 import com.examen.service.ICargaHorariaService;
+import com.examen.service.IHorarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,9 +15,13 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/cargahoraria")
+
 public class CargaHorariaController {
     @Autowired
     private ICargaHorariaService cargaHorariaService;
+
+    @Autowired
+    private IHorarioService horarioService;
 
     @GetMapping("/find/{id}")
     public ResponseEntity<?> findById(@PathVariable Long id){
@@ -89,8 +94,19 @@ public class CargaHorariaController {
                                 .build())
                         .administrador(AdministradorDTO.builder()
                                 .id(cargaHoraria.getAdministrador().getId())
+                                .nombre(cargaHoraria.getAdministrador().getNombre())
                                 .build())
+                        .horarios(horarioService.findByMateriaAndGrupo(cargaHoraria.getMateria(), cargaHoraria.getGrupo())
+                                .stream().map(horario-> HorarioMateriaGrupoDTO.builder()
+                                        .id(horario.getId())
+                                        .aula(horario.getAula().getNumero())
+                                        .dia(horario.getDia())
+                                        .horaInicio(horario.getHoraInicio())
+                                        .horaFin(horario.getHoraFin())
+                                        .build()).toList())
                         .build()
+
+
                 ).toList();
         return ResponseEntity.ok(cargaHorariaDTOS);
     }

@@ -1,6 +1,8 @@
 package com.examen.service.implement;
 
+import com.examen.entity.Grupo;
 import com.examen.entity.Horario;
+import com.examen.entity.Materia;
 import com.examen.persistence.IHorarioDAO;
 import com.examen.repository.HorarioRepository;
 import com.examen.service.IHorarioService;
@@ -21,6 +23,11 @@ public class HorarioServiceImplement implements IHorarioService {
     @Override
     public List<Horario> findAll() {
         return horarioDAO.findAll();
+    }
+
+    @Override
+    public List<Horario> findByMateriaAndGrupo(Materia materia, Grupo grupo) {
+        return horarioDAO.findByMateriaAndGrupo(materia,grupo);
     }
 
     @Override
